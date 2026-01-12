@@ -9,7 +9,7 @@ import { Task } from '../../models/task.model';
   standalone: true,
   imports: [CommonModule, TaskCardComponent],
   templateUrl: './task-board.component.html',
-  styleUrls: ['./task-board.component.css']
+  styleUrl: './task-board.component.css'
 })
 export class TaskBoardComponent {
   private taskService = inject(TaskService);

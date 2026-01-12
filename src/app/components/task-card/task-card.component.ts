@@ -7,7 +7,7 @@ import { Task } from '../../models/task.model';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './task-card.component.html',
-  styleUrls: ['./task-card.component.css']
+  styleUrl: './task-card.component.css'
 })
 export class TaskCardComponent {
   @Input() task!: Task;
