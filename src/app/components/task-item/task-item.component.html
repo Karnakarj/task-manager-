@@ -1,0 +1,31 @@
+<div class="task-item" [class]="getStatusClass()">
+  <div class="task-header">
+    <h3 class="task-title">{{ task.title }}</h3>
+    <div class="task-actions">
+      <button class="btn-icon btn-edit" (click)="onEdit()" title="Edit">
+        ✏️
+      </button>
+      <button class="btn-icon btn-delete" (click)="onDelete()" title="Delete">
+        🗑️
+      </button>
+    </div>
+  </div>
+  @if (task.description) {
+    <p class="task-description">{{ task.description }}</p>
+  }
+  <div class="task-footer">
+    <div class="status-selector">
+      <label for="status-{{ task.id }}">Status:</label>
+      <select
+        [id]="'status-' + task.id"
+        (change)="onStatusChange($event)"
+        class="status-select"
+      >
+        <option [value]="TaskStatus.TODO" [selected]="task.status === TaskStatus.TODO">{{ TaskStatus.TODO }}</option>
+        <option [value]="TaskStatus.IN_PROGRESS" [selected]="task.status === TaskStatus.IN_PROGRESS">{{ TaskStatus.IN_PROGRESS }}</option>
+        <option [value]="TaskStatus.DONE" [selected]="task.status === TaskStatus.DONE">{{ TaskStatus.DONE }}</option>
+      </select>
+    </div>
+    <span class="task-date">Updated: {{ task.updatedAt | date:'short' }}</span>
+  </div>
+</div>
