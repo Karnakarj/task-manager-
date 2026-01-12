@@ -1,0 +1,29 @@
+<div class="task-card" [ngClass]="getPriorityClass()">
+  <div class="task-header">
+    <h3 class="task-title">{{ task.title }}</h3>
+    <button class="delete-btn" (click)="onDelete()" title="Delete task">
+      ✕
+    </button>
+  </div>
+  
+  <p class="task-description">{{ task.description }}</p>
+  
+  <div class="task-footer">
+    <span class="priority-badge" [ngClass]="getPriorityClass()">
+      {{ task.priority }}
+    </span>
+    
+    <select 
+      class="status-select" 
+      [value]="task.status" 
+      (change)="onStatusChange($event)">
+      <option value="todo">To Do</option>
+      <option value="in-progress">In Progress</option>
+      <option value="done">Done</option>
+    </select>
+  </div>
+  
+  <div class="task-date">
+    Created: {{ task.createdAt | date: 'short' }}
+  </div>
+</div>
