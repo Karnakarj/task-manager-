@@ -1,0 +1,14 @@
+<article class="card">
+  <div class="card-header">
+    <h3>{{ task.title }}</h3>
+    <span class="badge" [class.high]="task.priority === 'high'" [class.medium]="task.priority === 'medium'">
+      {{ priorityLabel }} priority
+    </span>
+  </div>
+  <p class="description" *ngIf="task.description">{{ task.description }}</p>
+
+  <div class="meta">
+    <span class="pill">Assignee: {{ task.assignee || 'Unassigned' }}</span>
+    <span class="pill" *ngIf="task.dueDate">Due {{ task.dueDate }}</span>
+  </div>
+</article>

@@ -1,0 +1,19 @@
+<div class="board" *ngIf="tasks$ | async as tasks">
+  <section class="column" *ngFor="let status of statuses">
+    <header class="column-header">
+      <div>
+        <p class="status-label">{{ statusLabel(status) }}</p>
+        <p class="count">{{ getTasksForStatus(tasks, status).length }} tasks</p>
+      </div>
+      <span class="dot" [class.active]="status !== 'done'"></span>
+    </header>
+
+    <div class="cards">
+      <app-task-card
+        *ngFor="let task of getTasksForStatus(tasks, status)"
+        [task]="task"
+      ></app-task-card>
+      <p class="empty" *ngIf="!getTasksForStatus(tasks, status).length">No tasks yet</p>
+    </div>
+  </section>
+</div>
