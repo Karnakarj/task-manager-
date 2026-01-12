@@ -16,7 +16,7 @@
     <select 
       class="status-select" 
       [value]="task.status" 
-      (change)="onStatusChange($any($event.target).value)">
+      (change)="onStatusChange($event)">
       <option value="todo">To Do</option>
       <option value="in-progress">In Progress</option>
       <option value="done">Done</option>

@@ -14,8 +14,9 @@ export class TaskCardComponent {
   @Output() statusChange = new EventEmitter<{ id: number; status: Task['status'] }>();
   @Output() deleteTask = new EventEmitter<number>();
 
-  onStatusChange(newStatus: Task['status']) {
-    this.statusChange.emit({ id: this.task.id, status: newStatus });
+  onStatusChange(event: Event) {
+    const target = event.target as HTMLSelectElement;
+    this.statusChange.emit({ id: this.task.id, status: target.value as Task['status'] });
   }
 
   onDelete() {
