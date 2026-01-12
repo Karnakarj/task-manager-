@@ -37,9 +37,11 @@ export class TaskService {
   }
 
   addTask(task: Omit<Task, 'id' | 'createdAt'>) {
+    const taskIds = this.tasks().map(t => t.id);
+    const maxId = taskIds.length > 0 ? Math.max(...taskIds) : 0;
     const newTask: Task = {
       ...task,
-      id: Math.max(...this.tasks().map(t => t.id), 0) + 1,
+      id: maxId + 1,
       createdAt: new Date()
     };
     this.tasks.update(tasks => [...tasks, newTask]);
