@@ -1,0 +1,25 @@
+<div class="app-container">
+  <header class="app-header">
+    <h1>{{ title }}</h1>
+    <p class="subtitle">Manage your tasks efficiently</p>
+  </header>
+
+  <main class="app-main">
+    <app-task-form
+      [task]="editingTask()"
+      (submitTask)="onSubmitTask($event)"
+      (cancel)="onCancelEdit()"
+    ></app-task-form>
+
+    <app-task-list
+      [tasks]="taskService.getTasks()()"
+      (editTask)="onEditTask($event)"
+      (deleteTask)="onDeleteTask($event)"
+      (statusChange)="onStatusChange($event)"
+    ></app-task-list>
+  </main>
+
+  <footer class="app-footer">
+    <p>Built with Angular 21 • Data persists in LocalStorage</p>
+  </footer>
+</div>
