@@ -1,0 +1,46 @@
+<div class="task-board">
+  <div class="column">
+    <div class="column-header todo">
+      <h2>To Do</h2>
+      <span class="task-count">{{ todoTasks().length }}</span>
+    </div>
+    <div class="task-list">
+      <app-task-card 
+        *ngFor="let task of todoTasks()"
+        [task]="task"
+        (statusChange)="onStatusChange($event.id, $event.status)"
+        (deleteTask)="onDeleteTask($event)">
+      </app-task-card>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="column-header in-progress">
+      <h2>In Progress</h2>
+      <span class="task-count">{{ inProgressTasks().length }}</span>
+    </div>
+    <div class="task-list">
+      <app-task-card 
+        *ngFor="let task of inProgressTasks()"
+        [task]="task"
+        (statusChange)="onStatusChange($event.id, $event.status)"
+        (deleteTask)="onDeleteTask($event)">
+      </app-task-card>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="column-header done">
+      <h2>Done</h2>
+      <span class="task-count">{{ doneTasks().length }}</span>
+    </div>
+    <div class="task-list">
+      <app-task-card 
+        *ngFor="let task of doneTasks()"
+        [task]="task"
+        (statusChange)="onStatusChange($event.id, $event.status)"
+        (deleteTask)="onDeleteTask($event)">
+      </app-task-card>
+    </div>
+  </div>
+</div>
